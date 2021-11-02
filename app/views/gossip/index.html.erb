@@ -1,0 +1,37 @@
+<body class="text-center">
+  <br/><br/><br/><br/>
+  <!-- jumbotron accueil -->
+  <div class="container px-4">
+    <div class="jumbotron jumbotron-fluid text-center">
+      <h1 class="display-4"> Bienvenue sur Gossip !</h1>
+      <p class="lead"> Retrouve ici les gossips les plus croustillants.</p>
+      <hr class="my-4 ">
+      <p>Partage tes propres gossips.</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" role="button" <%= link_to 'Créer un gossip', new_gossip_path %>></a>
+      </p>
+    </div>
+  </div>
+  <!-- gossip cards -->
+  <div class="album py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% @gossips.each_with_index do |gossip, index| %>
+          <div class="col">
+            <div class="card shadow-sm">
+              <div class="card-header text-center pb-1 text-warning"><h4>Gossip n°<%=index + 1%></h4></div>
+              <div class="card-body text-center">
+                <h5 class="card-title"><%=gossip.title%></h5>
+                <p class="card-text">Created by <%=gossip.user.first_name%></p>
+              </div>
+              <div class="card-footer">
+                <a class="btn btn-outline-secondary btn-sm" role="button" <%= link_to 'Voir le gossip', gossip_path(gossip.id) %>></a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br/><br/><br/><br/>
+</body>

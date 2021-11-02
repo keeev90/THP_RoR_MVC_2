@@ -1,0 +1,31 @@
+<body class="text-center">
+  <br/><br/><br/>
+  <!-- Alerts / Flash messages -->
+  <% flash.each do |key, msg| %>
+    <div class="alert alert-<%=key%> text-center" role="alert">
+      <%= msg %>
+    </div>
+  <% end %>
+
+  <!-- Titre de la page -->
+  <br/><br/>
+  <h1>Créer un gossip</h1>
+  <br/><br/>
+  <!-- Form via le helper form_tag -->
+  <%= form_tag url_for(action: 'create'), method: "post" do %>
+  <form>
+    <div class="form-group">
+      <label for="gossipTitle">Titre du gossip</label>
+      <%= text_field_tag 'gossip_title'%>
+      <br/><br/>
+    </div>
+      <label for="gossipContent">Contenu</label>
+      <%= text_area_tag 'gossip_content' %>
+      <br/><br/>
+    </div>
+    <button type="submit" class="btn btn-primary">Valider</button>
+  </form>
+  <% end %>
+
+  <br/><br/><br/><br/>
+</body>
